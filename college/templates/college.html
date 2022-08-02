@@ -1,0 +1,69 @@
+{% extends 'basic.html' %}
+
+{% block title %} Admission System {% endblock %}
+{% block home %} active {% endblock %}
+
+{% block css %}
+{% endblock %}
+{% block body %}
+{% if request.user.is_authenticated %}
+
+{% else %}
+
+<style>
+        .GOV {
+            background-color: white;
+            border: 2px solid black;
+            color: #800000;
+            padding: 5px 10px;
+            text-align: center;
+            display: inline-block;
+            font-size: 20px;
+            margin: 10px 30px;
+            cursor: pointer;
+        }
+    </style>
+
+<center>
+
+<div class="container mt-3">
+  <div class="alert alert-danger" role="alert">
+    <h5>Login to fill the application form</h5>
+  </div>
+</div>
+{% endif %}
+<div class="container mt-4">
+  <center>
+<br><br>
+    <h1>Game of Visas</h1>
+<br><br>
+
+    <h4> Get placed in top Universities of the World </h4>
+<br><br>
+    <h6> If you are serious about doing masters in foreign universities, no <br> matter whether you are in first year, final year, or a drop out. <br> We will be there to guide you at each step till you get a job.</h6>
+<br><br>
+    <a href='https://gameofvisas.com/'>
+        <button class="GOV">
+            Learn More
+        </button>
+    </a>
+
+<!-- For Notice *************************************************************************
+<div class="row mt-4">
+  {% for i in notice %}
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{i.title}}</h5>
+          <p class="card-text"><a href="/notice/{{i.id}}/">View all recent updates.</a></p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+************************************************************* -->
+
+
+  </div>
+{% endblock %}
