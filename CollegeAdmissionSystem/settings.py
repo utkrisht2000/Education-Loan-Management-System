@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -14,7 +15,7 @@ SECRET_KEY = 'tih8lsf+tzwkuv!@%l-$20r8q$96xygas5okxmc5qivw8y1mhs'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['gameofvisas.herokuapp.com']
 
 
 # Application definition
@@ -66,10 +67,10 @@ WSGI_APPLICATION = 'CollegeAdmissionSystem.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'demo',
-        'USER': 'postgres',
-        'PASSWORD': 'admin123',
-        'HOST': 'localhost',
+        'NAME': 'dajhh3ehm42v0a',
+        'USER': 'nmokoxgsixfvxu',
+        'PASSWORD': 'f124595ac007660620ee1f5185b3608bb33dd5831c32279cecb3ca6894cd887c',
+        'HOST': 'ec2-18-214-35-70.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
@@ -112,12 +113,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = '/static/'
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
-]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'college/media')
 MEDIA_URL = '/media/'
+django_heroku.settings(locals())
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
