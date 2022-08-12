@@ -21,7 +21,4 @@ urlpatterns = [
     path("approved_applications/", views.approved_applications, name="approved_applications"),
     path("pending_applications/", views.pending_applications, name="pending_applications"),
     path("rejected_applications/", views.rejected_applications, name="rejected_applications"),
-    path("SBI_applications/", views.SBI_applications, name="SBI_applications"),
-    path("PNB_applications/", views.PNB_applications, name="PNB_applications"),
-    path("Axis_applications/", views.Axis_applications, name="Axis_applications"),
 ]

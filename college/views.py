@@ -106,13 +106,10 @@ def handle_admin(request):
     if not request.user.is_superuser:
         return redirect("/login")
     users = User.objects.all().count
-    approve = Application.objects.filter(Application_Status='Approved').count
-    reject = Application.objects.filter(Application_Status='Rejected').count
-    pending = Application.objects.filter(Application_Status='Pending').count
-    SBI = Application.objects.filter(Bank='SBI').count
-    PNB = Application.objects.filter(Bank='PNB').count
-    Axis = Application.objects.filter(Bank='Axis').count
-    return render(request, "handle_admin.html", {'approve':approve, 'reject':reject, 'pending':pending, 'users':users, 'SBI':SBI, 'PNB':PNB, 'Axis': Axis})
+    approve = Application.objects.filter(SBI_Status='Approved').count
+    reject = Application.objects.filter(SBI_Status='Rejected').count
+    pending = Application.objects.filter(SBI_Status='Pending').count
+    return render(request, "handle_admin.html", {'approve':approve, 'reject':reject, 'pending':pending, 'users':users})
 
 def users(request):
     if not request.user.is_superuser:
@@ -129,42 +126,26 @@ def student_application(request, myid):
 class UpdatePostView(UpdateView):
     model = Application
     template_name = 'application_status.html'
-    fields = ('Application_Status', 'Bank', 'Capital_Amount', 'Interest', 'message',)
+    fields = ( 'bank', 'message', 'SBI_Status', 'SBI_Capital_Amount', 'SBI_Interest', 
+    		'PNB_Status', 'PNB_Capital_Amount', 'PNB_Interest', 'Axis_Status', 
+    		'Axis_Capital_Amount', 'Axis_Interest', 'HDFC_Status',
+    		 'HDFC_Capital_Amount', 'HDFC_Interest',)
 
 def approved_applications(request):
     if not request.user.is_superuser:
         return redirect("/login")
-    approved = Application.objects.filter(Application_Status="Approved")
+    approved = Application.objects.filter(SBI_Status="Approved")
     return render(request, "approved_applications.html", {'approved':approved})
 
 def pending_applications(request):
     if not request.user.is_superuser:
         return redirect("/login")
-    pending = Application.objects.filter(Application_Status="Pending")
+    pending = Application.objects.filter(SBI_Status="Pending")
     return render(request, "pending_applications.html", {'pending':pending})
 
 def rejected_applications(request):
     if not request.user.is_superuser:
         return redirect("/login")
-    rejected = Application.objects.filter(Application_Status="Rejected")
+    rejected = Application.objects.filter(SBI_Status="Rejected")
     return render(request, "rejected_applications.html", {'rejected':rejected})
-    
-def SBI_applications(request):
-    if not request.user.is_superuser:
-        return redirect("/login")
-    SBI = Application.objects.filter(Bank="SBI")
-    return render(request, "SBI_applications.html", {'SBI':SBI})
-    
-def PNB_applications(request):
-    if not request.user.is_superuser:
-        return redirect("/login")
-    PNB = Application.objects.filter(Bank="PNB")
-    return render(request, "PNB_applications.html", {'PNB':PNB})
-    
-def Axis_applications(request):
-    if not request.user.is_superuser:
-        return redirect("/login")
-    Axis = Application.objects.filter(Bank="Axis")
-    return render(request, "Axis_applications.html", {'Axis':Axis})
-    
     

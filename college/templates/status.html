@@ -14,10 +14,10 @@
 .form-style-5{
     max-width: 500px;
     padding: 10px 20px;
-    background: #f4f7f8;
+    background: #FF5733;
     margin: 10px auto;
     padding: 20px;
-    background: #f4f7f8;
+    background: #ff9999;
     border-radius: 8px;
     font-family: Georgia, "Times New Roman", Times, serif;
 }
@@ -116,19 +116,54 @@
 }
 </style>
 
+<center>
+<h3> Notification From {{application.bank}} :  {{application.message}}</h3>
+</center>
 
 
+{% if application.SBI_Status == 'Approved' or application.SBI_Status == 'Rejected' %}
 <div class="form-style-5">
+    <h5> Bank Name: State Bank of India</h5>
+    <h5> Application Status:  {{application.SBI_Status}} </h5> 
+     <h5> Capital Amount: ₹ {{application.SBI_Capital_Amount}} /-</h5>
+    <h5> Interest Rate: {{application.SBI_Interest}} %</h5>
+</div>
+{% endif %}
+
+
+{% if application.PNB_Status == 'Approved' or application.PNB_Status == 'Rejected' %}
+<div class="form-style-5">
+    <h5> Bank Name : Punjab National Bank</h5>
+    <h5> Application Status:  {{application.PNB_Status}} </h5>
+     <h5> Capital Amount: ₹ {{application.PNB_Capital_Amount}} /-</h5>
+    <h5> Interest Rate: {{application.PNB_Interest}} %</h5>
+</div>
+{% endif %}
+
+{% if application.Axis_Status == 'Approved' or application.Axis_Status == 'Rejected' %}
+<div class="form-style-5">
+    <h5> Bank Name: Axis Bank</h5>
+    <h5> Application Status:  {{application.Axis_Status}} </h5>
+     <h5> Capital Amount: ₹ {{application.Axis_Capital_Amount}} /-</h5>
+    <h5> Interest Rate: {{application.Axis_Interest}} %</h5>
+</div>
+{% endif %}
+
+{% if application.HDFC_Status == 'Approved' or application.HDFC_Status == 'Rejected' %}
+<div class="form-style-5">
+    <h5> Bank Name: HDFC Bank</h5>
+    <h5> Application Status:  {{application.HDFC_Status}} </h5>
+     <h5> Capital Amount: ₹ {{application.HDFC_Capital_Amount}} /-</h5>
+    <h5> Interest Rate: {{application.HDFC_Interest}} %</h5>
+</div>
+{% endif %}
+
+{% if application.PNB_Status != 'Approved' and application.PNB_Status != 'Rejected' and application.PNB_Status != 'Approved' and application.PNB_Status != 'Rejected' and application.Axis_Status != 'Approved' and application.Axis_Status != 'Rejected' and application.HDFC_Status != 'Approved' and application.HDFC_Status != 'Rejected' %}
+<div>
     <br> <br>
-    <h5>Application Status:  {{application.Application_Status}} </h5>
-    <br> <br>
-     <h5> Bank : {{application.Bank}}</h5>
-     <br> <br>
-     <h5> Capital Amount: ₹ {{application.Capital_Amount}} /-</h5>
-    <br> <br>
-    <h5> Interest Rate: {{application.Interest}} %</h5>
-    <br> <br>
-    <h5>Remark's: {{application.message}}</h5>
+    <center>
+    <h3> Your Application Are Under Process !</h3>
 </div>
 
+{% endif %}
 {% endblock %}

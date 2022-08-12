@@ -21,7 +21,10 @@ class Application(models.Model):
         ('SBI', 'SBI'),
         ('PNB', 'PNB'),
         ('Axis', 'Axis'),
+        ('HDFC', 'HDFC'),
     )
+    
+    
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)
     ms_Course = models.CharField(max_length=200, choices= COURSES)
@@ -42,11 +45,25 @@ class Application(models.Model):
     gRE_Scorecard = models.ImageField(upload_to="images", null=True)
     iELTS_Score = models.IntegerField(null=True)
     iELTS_Scorecard = models.ImageField(upload_to="images", null=True)
-    Application_Status = models.TextField(max_length=100, choices=STATUS, default="Pending",  blank=True)
-    Bank = models.TextField(max_length=100, choices=BANK, default=" ", blank=True)
-    Capital_Amount = models.IntegerField(null=True)
-    Interest = models.DecimalField(max_digits=5, decimal_places=3, null=True)
-    message = models.CharField(max_length=100, default="", null=True, blank=True)
+    
+    bank = models.TextField(max_length=100, choices=BANK, default="Choose Bank", null=True, blank = True)
+    message = models.CharField(max_length=100, null=True, blank = True, default="NA")
+    
+    SBI_Status = models.TextField(max_length=100, choices=STATUS, default="Pending", null=True, blank = True)
+    SBI_Capital_Amount = models.IntegerField(null=True, blank = True, default="0")
+    SBI_Interest = models.DecimalField(max_digits=5, decimal_places=3, null=True, blank = True , default="0.0")
+    
+    PNB_Status = models.TextField(max_length=100, choices=STATUS, default="Pending" , null=True, blank = True)
+    PNB_Capital_Amount = models.IntegerField(null=True, blank = True , default="0")
+    PNB_Interest = models.DecimalField(max_digits=5, decimal_places=3, null=True, blank = True, default="0.0")
+    
+    Axis_Status = models.TextField(max_length=100, choices=STATUS, default="Pending" , null=True, blank = True)
+    Axis_Capital_Amount = models.IntegerField(null=True, blank = True, default="0")
+    Axis_Interest = models.DecimalField(max_digits=5, decimal_places=3, null=True, blank = True , default="0.0")
+    
+    HDFC_Status = models.TextField(max_length=100, choices=STATUS, default="Pending" , null=True, blank = True)
+    HDFC_Capital_Amount = models.IntegerField(null=True, blank = True, default="0")
+    HDFC_Interest = models.DecimalField(max_digits=5, decimal_places=3, null=True, blank = True , default="0.0")
 
     def __str__(self):
         return self.name

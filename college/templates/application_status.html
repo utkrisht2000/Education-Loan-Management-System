@@ -11,7 +11,7 @@
     background: #f4f7f8;
     margin: 10px auto;
     padding: 20px;
-    background: #f4f7f8;
+    background: #ff9999;;
     border-radius: 8px;
     font-family: Georgia, "Times New Roman", Times, serif;
 }
@@ -110,15 +110,157 @@
 }
 </style>
 
+<!----------------------------------------------------->
+{% if request.user.username == 'sbi_admin' %}
+    <form enctype="multipart/form-data" method="POST"> {% csrf_token %}
+        <div class="form-style-5">
+        <fieldset>
+            <h5> Bank Name : State Bank of India </h5> <br>
 
-<form enctype="multipart/form-data" method="POST"> {% csrf_token %}
-<div class="form-style-5">
-<fieldset>
-<legend><span class="number">1</span>Update Status</legend>
-{{ form.as_p }}
-<input type="submit" value="Submit" />
-</form>
-</div>
-</form>
-</fieldset></div>
+    <div>
+        <label for="{{ form.SBI_Status.id_for_label }}">Status:</label>
+        {{ form.SBI_Status }}
+    </div>
+
+    <div>
+        <label for="{{ form.SBI_Capital_Amount.id_for_label }}">Capital Amount:</label>
+        {{ form.SBI_Capital_Amount }}
+    </div>
+
+    <div>
+        <label for="{{ form.SBI_Interest.id_for_label }}">Interest Rate:</label>
+        {{ form.SBI_Interest}}
+    </div>
+ 
+    <h3>---------- Remark's ---------- </h3> <br>
+    <div>
+        <label for="{{ form.bank.id_for_label }}">Bank:</label>
+        {{ form.SBI_bank}}
+    </div>
+    <div>
+        <label for="{{ form.message.id_for_label }}">Remark's:</label>
+        {{ form.message}}
+    </div>
+
+    <input type="submit" value="Submit" />
+
+    </form>
+        </fieldset></div>
+
+<!----------------------------------------------------->
+{% elif request.user.username == 'pnb_admin' %}
+
+    <form enctype="multipart/form-data" method="POST"> {% csrf_token %}
+        <div class="form-style-5">
+        <fieldset>
+            <h5> Bank Name : Punjab National Bank </h5> <br>
+
+    <div>
+        <label for="{{ form.PNB_Status.id_for_label }}">Status:</label>
+        {{ form.PNB_Status }}
+    </div>
+
+    <div>
+        <label for="{{ form.PNB_Capital_Amount.id_for_label }}">Capital Amount:</label>
+        {{ form.PNB_Capital_Amount }}
+    </div>
+
+    <div>
+        <label for="{{ form.PNB_Interest.id_for_label }}">Interest Rate:</label>
+        {{ form.PNB_Interest}}
+    </div>
+
+    <h3>---------- Remark's ---------- </h3> <br>
+    <div>
+        <label for="{{ form.bank.id_for_label }}">Bank:</label>
+        {{ form.SBI_bank}}
+    </div>
+    <div>
+        <label for="{{ form.message.id_for_label }}">Remark's:</label>
+        {{ form.message}}
+    </div>
+    <input type="submit" value="Submit" />
+
+    </form>
+        </fieldset></div>
+
+
+<!----------------------------------------------------->
+{% elif request.user.username == 'axis_admin' %}
+    <form enctype="multipart/form-data" method="POST"> {% csrf_token %}
+        <div class="form-style-5">
+        <fieldset>
+            <h5> Bank Name : Axis Bank </h5> <br>
+
+    <div>
+        <label for="{{ form.Axis_Status.id_for_label }}">Status:</label>
+        {{ form.Axis_Status }}
+    </div>
+
+    <div>
+        <label for="{{ form.Axis_Capital_Amount.id_for_label }}">Capital Amount:</label>
+        {{ form.Axis_Capital_Amount }}
+    </div>
+
+    <div>
+        <label for="{{ form.Axis_Interest.id_for_label }}">Interest Rate:</label>
+        {{ form.Axis_Interest}}
+    </div>
+
+    <h3>---------- Remark's ---------- </h3> <br>
+    <div>
+        <label for="{{ form.bank.id_for_label }}">Bank:</label>
+        {{ form.SBI_bank}}
+    </div>
+    <div>
+        <label for="{{ form.message.id_for_label }}">Remark's:</label>
+        {{ form.message}}
+    </div>
+    <input type="submit" value="Submit" />
+
+    </form>
+        </fieldset></div>
+
+
+<!----------------------------------------------------->
+{% elif request.user.username == 'hdfc_admin' %}
+
+    <form enctype="multipart/form-data" method="POST"> {% csrf_token %}
+        <div class="form-style-5">
+        <fieldset>
+            <h5> Bank Name : HDFC Bank </h5> <br>
+
+    <div>
+        <label for="{{ form.HDFC_Status.id_for_label }}">Status:</label>
+        {{ form.HDFC_Status }}
+    </div>
+
+    <div>
+        <label for="{{ form.HDFC_Capital_Amount.id_for_label }}">Capital Amount:</label>
+        {{ form.HDFC_Capital_Amount }}
+    </div>
+
+    <div>
+        <label for="{{ form.HDFC_Interest.id_for_label }}">Interest Rate:</label>
+        {{ form.HDFC_Interest}}
+    </div>
+
+    <h3>---------- Remark's ---------- </h3> <br>
+    <div>
+        <label for="{{ form.bank.id_for_label }}">Bank:</label>
+        {{ form.SBI_bank}}
+    </div>
+    <div>
+        <label for="{{ form.message.id_for_label }}">Remark's:</label>
+        {{ form.message}}
+    </div>
+    <input type="submit" value="Submit" />
+
+    </form>
+        </fieldset></div>
+{% endif %}
+
+
+<!----------------------------------------------------->
+
 {% endblock %}
