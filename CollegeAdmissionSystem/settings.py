@@ -67,10 +67,10 @@ WSGI_APPLICATION = 'CollegeAdmissionSystem.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dajhh3ehm42v0a',
-        'USER': 'nmokoxgsixfvxu',
-        'PASSWORD': 'f124595ac007660620ee1f5185b3608bb33dd5831c32279cecb3ca6894cd887c',
-        'HOST': 'ec2-18-214-35-70.compute-1.amazonaws.com',
+        'NAME': 'dds3jr0hd0rda3',
+        'USER': 'akrlrbhfjbxxht',
+        'PASSWORD': '7a277ff37f99316ffa70c060fa8e485b5b76421df7fcec5738b413cf3650483d',
+        'HOST': 'ec2-34-193-44-192.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
