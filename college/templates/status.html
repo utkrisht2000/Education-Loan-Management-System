@@ -116,10 +116,17 @@
 }
 </style>
 
+<br> <br>
+<div class="form-style-5">
+{% if application.message != "NA" %}
 <center>
-<h3> Notification From {{application.bank}} :  {{application.message}}</h3>
+<h4> <b>Notification From {{application.bank}} </b></h4>
+<h5>  {{application.message}}</h5>
+{% endif %}
+</div>
 </center>
 
+<br> <br>
 
 {% if application.SBI_Status == 'Approved' or application.SBI_Status == 'Rejected' %}
 <div class="form-style-5">
@@ -158,7 +165,7 @@
 </div>
 {% endif %}
 
-{% if application.PNB_Status != 'Approved' and application.PNB_Status != 'Rejected' and application.PNB_Status != 'Approved' and application.PNB_Status != 'Rejected' and application.Axis_Status != 'Approved' and application.Axis_Status != 'Rejected' and application.HDFC_Status != 'Approved' and application.HDFC_Status != 'Rejected' %}
+{% if application.SBI_Status != 'Approved' and application.SBI_Status != 'Rejected' and application.PNB_Status != 'Approved' and application.PNB_Status != 'Rejected' and application.Axis_Status != 'Approved' and application.Axis_Status != 'Rejected' and application.HDFC_Status != 'Approved' and application.HDFC_Status != 'Rejected' %}
 <div>
     <br> <br>
     <center>
